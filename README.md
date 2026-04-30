@@ -75,17 +75,22 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 
 ## ⚙️ Installation & Setup
 
-### 1. Clone Repository
+**1. Clone Repository**
 ```bash
 git clone https://github.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT.git
 cd TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT
 
-Install Git LFS & Pull Models
+2. Install Git LFS & Pull Models
+
 git lfs install
 git lfs pull
+
 3. Install Dependencies
+
 pip install -r requirements.txt
+
 4. Run Project
+
 python manage.py migrate
 python manage.py runserver
 ✨ Features
@@ -94,8 +99,3 @@ Ensemble ML model for high accuracy
 Admin dashboard for monitoring
 Data visualization (charts & graphs)
 Secure SCADA-IIoT environment
-🔮 Future Scope
-Real-time IoT device integration
-Cloud deployment (AWS/GCP)
-Advanced deep learning models
-Alert/notification system
