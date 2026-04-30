@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Control Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #020617, #000000 70%);
+    color:#00ffe7;
+}
+
+/* NAVBAR */
+.topnav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 30px;
+    background:#020617;
+    border-bottom:1px solid #00ffe7;
+    box-shadow:0 0 15px #00ffe744;
+}
+
+.admin-welcome{
+    font-size:18px;
+    font-weight:600;
+    text-shadow:0 0 8px #00ffe7;
+}
+
+.nav-links a{
+    color:#00ffe7;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:13px;
+}
+
+.nav-links a:hover{
+    text-shadow:0 0 8px #00ffe7;
+}
+
+/* MAIN AREA */
+.mainholder{
+    padding:40px;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.hero h1{
+    font-size:24px;
+    margin-bottom:10px;
+    text-shadow:0 0 12px #00ffe7;
+}
+
+.hero p{
+    font-size:13px;
+    color:#7df9ff;
+}
+
+/* FEATURE GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.card{
+    background:rgba(2,6,23,0.8);
+    border:1px solid #00ffe7;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px #00ffe7;
+}
+
+.card-title{
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.card-desc{
+    font-size:11px;
+    color:#7df9ff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="topnav">
+    <div class="admin-welcome">Welcome Admin</div>
+
+    <div class="nav-links">
+        <a href="{% url 'login' %}">Logout</a>
+    </div>
+</div>
+
+<div class="mainholder">
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Industrial IoT Threat Detection Console</h1>
+        <p>Monitor predictions, analyze attack patterns and manage users</p>
+    </div>
+
+    <!-- FEATURE CARDS -->
+    <div class="grid">
+
+        <a href="{% url 'View_Prediction_Of_Cyber_Attack_Type' %}">
+            <div class="card">
+                <div class="card-title">Prediction Results</div>
+                <div class="card-desc">View detected cyber attack types</div>
+            </div>
+        </a>
+
+        <a href="{% url 'View_Cyber_Attack_Type_Ratio' %}">
+            <div class="card">
+                <div class="card-title">Attack Ratio</div>
+                <div class="card-desc">Distribution of cyber threats</div>
+            </div>
+        </a>
+
+        <a href="{% url 'charts' 'line' %}">
+            <div class="card">
+                <div class="card-title">Ratio Charts</div>
+                <div class="card-desc">Visual analytics of attacks</div>
+            </div>
+        </a>
+
+        <a href="{% url 'View_Remote_Users' %}">
+            <div class="card">
+                <div class="card-title">Remote Users</div>
+                <div class="card-desc">Manage registered users</div>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- CHILD PAGES -->
+    {% block researchblock %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

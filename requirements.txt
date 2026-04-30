@@ -1,0 +1,11 @@
+# Django
+Django>=4.2,<5.0
+
+# ML pipeline (match versions used for saved artifacts)
+scikit-learn==1.6.1
+numpy>=1.24,<2.0
+joblib>=1.2
+
+# Data / export
+pandas>=1.5
+xlwt>=1.3

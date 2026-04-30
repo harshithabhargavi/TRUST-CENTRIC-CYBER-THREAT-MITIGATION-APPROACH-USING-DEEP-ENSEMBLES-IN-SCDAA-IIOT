@@ -1,0 +1,107 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<style>
+
+/* CENTER */
+.profile-wrapper{
+    display:flex;
+    justify-content:center;
+    padding:50px 0;
+}
+
+/* MAIN CARD */
+.profile-card{
+    width:100%;
+    max-width:600px;
+    background:#020617;
+    padding:35px 40px;
+    border-radius:10px;
+    border:1px solid #00ffe7;
+    box-shadow:0 0 20px #00ffe733;
+    color:#00ffe7;
+    animation:fadeIn 0.5s ease;
+}
+
+/* TITLE */
+.profile-title{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:25px;
+    text-shadow:0 0 8px #00ffe7;
+}
+
+/* ROW */
+.profile-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #00ffe733;
+}
+
+/* LABEL */
+.profile-label{
+    color:#7df9ff;
+    font-size:13px;
+}
+
+/* VALUE */
+.profile-value{
+    font-weight:500;
+}
+
+/* FADE */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+
+<div class="profile-wrapper">
+
+<div class="profile-card">
+
+<div class="profile-title">
+YOUR PROFILE DETAILS
+</div>
+
+<div class="profile-row">
+<span class="profile-label">USER NAME</span>
+<span class="profile-value">{{object.username}}</span>
+</div>
+
+<div class="profile-row">
+<span class="profile-label">EMAIL</span>
+<span class="profile-value">{{object.email}}</span>
+</div>
+
+<div class="profile-row">
+<span class="profile-label">PASSWORD</span>
+<span class="profile-value">{{object.password}}</span>
+</div>
+
+<div class="profile-row">
+<span class="profile-label">MOBILE NO</span>
+<span class="profile-value">{{object.phoneno}}</span>
+</div>
+
+<div class="profile-row">
+<span class="profile-label">COUNTRY</span>
+<span class="profile-value">{{object.country}}</span>
+</div>
+
+<div class="profile-row">
+<span class="profile-label">STATE</span>
+<span class="profile-value">{{object.state}}</span>
+</div>
+
+<div class="profile-row" style="border:none;">
+<span class="profile-label">CITY</span>
+<span class="profile-value">{{object.city}}</span>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

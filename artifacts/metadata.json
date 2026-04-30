@@ -1,0 +1,158 @@
+{
+  "feature_columns": [
+    "Protocol Type",
+    "Flags",
+    "Source IP",
+    "Destination IP",
+    "Source Port",
+    "Destination Port",
+    "Flow Duration",
+    "Average Packet Size",
+    "Packet Arrival Rate",
+    "Payload Entropy",
+    "Flow Entropy",
+    "Baseline Deviation",
+    "Payload Pattern",
+    "Malicious Signatures",
+    "Device Type",
+    "Device Activity Patterns",
+    "Time of Day",
+    "Day of Week",
+    "Duration Anomaly",
+    "Attack Type",
+    "Device Context",
+    "Threat Intensity"
+  ],
+  "class_names": [
+    "Benign",
+    "Botnet",
+    "Ransomware",
+    "Spyware",
+    "Trojan",
+    "Worm"
+  ],
+  "per_model_accuracy": {
+    "Decision Tree": 0.21135209967697277,
+    "Random Forest": 0.3574065528380249,
+    "MLP": 0.27803414859252423,
+    "Ensemble": 0.21665897554222427
+  },
+  "train_accuracies": {
+    "Decision Tree": 1.0,
+    "Random Forest": 1.0,
+    "MLP": 0.46503980616130147,
+    "Ensemble": 1.0
+  },
+  "summary_metrics": {
+    "f1_macro": 0.16511965859526112,
+    "f1_weighted": 0.21725798601918234,
+    "precision_macro": 0.1651259860638935,
+    "precision_weighted": 0.2179720684135174,
+    "recall_macro": 0.16528911764160722,
+    "recall_weighted": 0.21665897554222427,
+    "accuracy": 0.21665897554222427
+  },
+  "confusion_matrix": [
+    [
+      578,
+      174,
+      278,
+      231,
+      173,
+      166
+    ],
+    [
+      192,
+      62,
+      94,
+      87,
+      65,
+      46
+    ],
+    [
+      286,
+      101,
+      106,
+      104,
+      87,
+      55
+    ],
+    [
+      236,
+      80,
+      98,
+      112,
+      76,
+      47
+    ],
+    [
+      182,
+      49,
+      68,
+      62,
+      48,
+      40
+    ],
+    [
+      117,
+      57,
+      61,
+      45,
+      38,
+      33
+    ]
+  ],
+  "classification_report": {
+    "Benign": {
+      "precision": 0.3632935260842238,
+      "recall": 0.36125,
+      "f1-score": 0.362268881228455,
+      "support": 1600.0
+    },
+    "Botnet": {
+      "precision": 0.11854684512428298,
+      "recall": 0.11355311355311355,
+      "f1-score": 0.11599625818521983,
+      "support": 546.0
+    },
+    "Ransomware": {
+      "precision": 0.150354609929078,
+      "recall": 0.14343707713125844,
+      "f1-score": 0.14681440443213298,
+      "support": 739.0
+    },
+    "Spyware": {
+      "precision": 0.1747269890795632,
+      "recall": 0.17257318952234207,
+      "f1-score": 0.17364341085271318,
+      "support": 649.0
+    },
+    "Trojan": {
+      "precision": 0.09856262833675565,
+      "recall": 0.10690423162583519,
+      "f1-score": 0.10256410256410256,
+      "support": 449.0
+    },
+    "Worm": {
+      "precision": 0.08527131782945736,
+      "recall": 0.09401709401709402,
+      "f1-score": 0.08943089430894309,
+      "support": 351.0
+    },
+    "accuracy": 0.21665897554222427,
+    "macro avg": {
+      "precision": 0.1651259860638935,
+      "recall": 0.16528911764160722,
+      "f1-score": 0.16511965859526112,
+      "support": 4334.0
+    },
+    "weighted avg": {
+      "precision": 0.2179720684135174,
+      "recall": 0.21665897554222427,
+      "f1-score": 0.21725798601918234,
+      "support": 4334.0
+    }
+  },
+  "roc_auc_macro": 0.49497874498610545,
+  "average_precision_macro": 0.1660463993176656
+}

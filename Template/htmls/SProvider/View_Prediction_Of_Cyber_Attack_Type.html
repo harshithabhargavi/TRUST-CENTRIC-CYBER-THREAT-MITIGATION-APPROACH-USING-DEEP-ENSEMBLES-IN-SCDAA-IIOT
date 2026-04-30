@@ -1,0 +1,141 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+
+<style>
+
+.table-wrapper{
+    background:#020617;
+    padding:25px;
+    border-radius:10px;
+    border:1px solid #00ffe7;
+    box-shadow:0 0 25px #00ffe744;
+}
+
+/* TITLE */
+.table-title{
+    text-align:center;
+    font-size:20px;
+    margin-bottom:20px;
+    color:#00ffe7;
+    text-shadow:0 0 10px #00ffe7;
+}
+
+/* SCROLL AREA */
+.table-scroll{
+    overflow:auto;
+    max-height:500px;
+}
+
+/* TABLE */
+.cyber-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+/* HEADER */
+.cyber-table th{
+    background:#00ffe7;
+    color:#000;
+    padding:10px;
+    position:sticky;
+    top:0;
+    z-index:2;
+}
+
+/* ROWS */
+.cyber-table td{
+    padding:8px;
+    border-bottom:1px solid #00ffe722;
+    color:#7df9ff;
+}
+
+/* HOVER */
+.cyber-table tr:hover{
+    background:#00ffe711;
+}
+
+/* PREDICTION BADGE */
+.badge{
+    padding:4px 8px;
+    border-radius:4px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.attack{
+    background:#ff4d4d;
+    color:#fff;
+}
+
+.safe{
+    background:#00c896;
+    color:#000;
+}
+
+</style>
+
+<div class="table-wrapper">
+
+<div class="table-title">
+View CIMD-2024 Cyber Attack Type Predictions
+</div>
+
+{% if message %}
+<p style="color:#00c896; margin-bottom:12px;">{{ message }}</p>
+{% endif %}
+
+<form method="post" action="{% url 'Clear_Prediction_Data' %}" style="margin-bottom:15px;" onsubmit="return confirm('Delete all prediction records? Only new submissions will be shown.');">
+  {% csrf_token %}
+  <button type="submit" style="background:#ff4d4d; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;">Clear all data</button>
+</form>
+
+<div class="table-scroll">
+
+<table class="cyber-table">
+<tr>
+<th>#</th>
+<th>Fid</th>
+<th>Protocol</th>
+<th>Flag</th>
+<th>Source IP</th>
+<th>Destination IP</th>
+<th>Source Port</th>
+<th>Destination Port</th>
+<th>Packet Size</th>
+<th>Prediction</th>
+</tr>
+
+{% for object in list_objects %}
+{% if object.Fid %}
+
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ object.Fid }}</td>
+<td>{{ object.Protocol }}</td>
+<td>{{ object.Flag }}</td>
+<td>{{ object.Source_IP_Address }}</td>
+<td>{{ object.Destination_IP_Address }}</td>
+<td>{{ object.Source_Port }}</td>
+<td>{{ object.Destination_Port }}</td>
+<td>{{ object.Packet_Size }}</td>
+<td>
+{% if object.Prediction == "Benign" %}
+<span class="badge safe">{{ object.Prediction }}</span>
+{% else %}
+<span class="badge attack">{{ object.Prediction }}</span>
+{% endif %}
+</td>
+</tr>
+
+{% endif %}
+{% empty %}
+<tr><td colspan="10" style="text-align:center; color:#7df9ff;">No predictions yet. Users submit from the prediction form (22 CIMD-2024 features).</td></tr>
+{% endfor %}
+
+</table>
+
+</div>
+</div>
+
+{% endblock %}

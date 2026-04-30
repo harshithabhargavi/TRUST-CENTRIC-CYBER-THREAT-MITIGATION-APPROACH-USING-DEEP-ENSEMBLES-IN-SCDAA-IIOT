@@ -1,0 +1,125 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+
+<style>
+/* PAGE BACKGROUND */
+body{
+    background:#020617;
+    font-family:'Orbitron', sans-serif;
+    color:#00ffe7;
+}
+
+/* WRAPPER */
+.chart-wrapper{
+    padding:40px;
+}
+
+/* TITLE */
+.chart-title{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:25px;
+    text-shadow:0 0 12px #00ffe7;
+}
+
+/* CHART CARD */
+.chart-card{
+    background:rgba(2,6,23,0.8);
+    border:1px solid #00ffe7;
+    border-radius:12px;
+    padding:25px;
+    backdrop-filter: blur(8px);
+    box-shadow:0 0 25px #00ffe733;
+}
+
+/* BUTTONS */
+.chart-controls{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.chart-controls a{
+    display:inline-block;
+    margin:0 10px;
+    padding:8px 18px;
+    color:#00ffe7;
+    text-decoration:none;
+    border:1px solid #00ffe7;
+    border-radius:6px;
+    transition:.3s;
+}
+
+.chart-controls a:hover{
+    background:#00ffe7;
+    color:black;
+    box-shadow:0 0 12px #00ffe7;
+}
+
+/* CHART AREA */
+#chartContainer{
+    height:420px;
+    width:100%;
+}
+
+/* FADE ANIMATION */
+.chart-card{
+    animation:fadeIn .7s ease;
+}
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px)}
+    to{opacity:1; transform:translateY(0)}
+}
+</style>
+
+<script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    backgroundColor: "transparent",
+    title: { text: "" },
+    data: [{
+        {% if chart_type == "line" %}
+            type: "line",
+        {% elif chart_type == "pie" %}
+            type: "pie",
+        {% elif chart_type == "spline" %}
+            type: "spline",
+        {% endif %}
+        startAngle: 240,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {% for o in form %}
+                {y: {{o.dcount}}, label: "{{o.names}}"},
+            {% endfor %}
+        ]
+    }]
+});
+chart.render();
+}
+</script>
+
+<div class="chart-wrapper">
+
+<div class="chart-title">
+Cyber Attack Ratio Analytics
+</div>
+
+<div class="chart-card">
+
+<!-- CHART SWITCH BUTTONS -->
+<div class="chart-controls">
+    <a href="{% url 'charts' 'pie' %}">Pie Chart</a>
+    <a href="{% url 'charts' 'line' %}">Line Chart</a>
+    <!--<a href="{% url 'charts' 'spline' %}">Spline Chart</a>-->
+</div>
+
+<div id="chartContainer"></div>
+
+</div>
+</div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<style>
+
+.predict-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.predict-card{
+    width:100%;
+    max-width:950px;
+    background:#020617;
+    border:1px solid #00ffe7;
+    border-radius:12px;
+    padding:35px;
+    box-shadow:0 0 25px #00ffe744;
+}
+
+/* TITLE */
+.predict-title{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:30px;
+    text-shadow:0 0 10px #00ffe7;
+}
+
+/* GRID */
+.predict-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:25px;
+    row-gap:18px;
+}
+
+/* FIELD */
+.field{
+    display:flex;
+    flex-direction:column;
+}
+
+.field label{
+    font-size:13px;
+    color:#7df9ff;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select{
+    padding:10px;
+    background:#000;
+    border:1px solid #00ffe7;
+    color:#00ffe7;
+    border-radius:5px;
+}
+.field .manual-input{
+    margin-top:6px;
+    display:none;
+}
+.field .manual-input.visible{
+    display:block;
+}
+
+/* BUTTON */
+.predict-btn{
+    margin-top:25px;
+    width:100%;
+    padding:13px;
+    background:#00ffe7;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* RESULT */
+.result-box{
+    margin-top:30px;
+    border:1px solid #00ffe7;
+    padding:18px;
+    text-align:center;
+    font-size:18px;
+    background:#000;
+    box-shadow:0 0 15px #00ffe744;
+}
+
+/* ERROR MESSAGE */
+.error{
+    color:#ff4d4d;
+    text-align:center;
+    margin-top:15px;
+}
+
+</style>
+
+<div class="predict-wrapper">
+<div class="predict-card">
+
+<div class="predict-title">
+PREDICTION OF CYBER ATTACK TYPE (CIMD-2024)
+</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST" onsubmit="return validateForm()">
+{% csrf_token %}
+
+<div class="predict-grid">
+{% for field in form_fields %}
+<div class="field" data-field-name="{{ field.name }}">
+<label>{{ field.name }}</label>
+<select class="predict-select" data-field="{{ field.name }}" required>
+<option value="">Select {{ field.name }}</option>
+{% for opt in field.options %}
+<option value="{{ opt }}">{{ opt }}</option>
+{% endfor %}
+<option value="__manual__">— Enter manually —</option>
+</select>
+<input type="text" class="manual-input" data-field="{{ field.name }}" placeholder="Enter value manually">
+<input type="hidden" name="{{ field.name }}" class="predict-value" data-field="{{ field.name }}">
+</div>
+{% endfor %}
+</div>
+
+<button class="predict-btn">Predict</button>
+</form>
+
+{% if objs %}
+<div class="result-box">
+PREDICTED LABEL :: <b>{{ objs }}</b>
+</div>
+{% endif %}
+
+</div>
+</div>
+
+<!-- Dropdown vs manual input + validation -->
+<script>
+(function(){
+    const MANUAL = "__manual__";
+    function syncField(sel, manualIn, hiddenIn){
+        if(sel.value === MANUAL){
+            manualIn.classList.add("visible");
+            manualIn.required = true;
+            hiddenIn.value = manualIn.value.trim();
+        } else {
+            manualIn.classList.remove("visible");
+            manualIn.required = false;
+            manualIn.value = "";
+            hiddenIn.value = sel.value || "";
+        }
+    }
+    function init(){
+        document.querySelectorAll(".predict-select").forEach(function(sel){
+            var name = sel.getAttribute("data-field");
+            var manualIn = document.querySelector(".manual-input[data-field=\"" + name + "\"]");
+            var hiddenIn = document.querySelector(".predict-value[data-field=\"" + name + "\"]");
+            if(!manualIn || !hiddenIn) return;
+            sel.addEventListener("change", function(){ syncField(sel, manualIn, hiddenIn); });
+            manualIn.addEventListener("input", function(){ hiddenIn.value = manualIn.value.trim(); });
+            syncField(sel, manualIn, hiddenIn);
+        });
+    }
+    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+})();
+function validateForm(){
+    document.querySelectorAll(".predict-select").forEach(function(sel){
+        var name = sel.getAttribute("data-field");
+        var manualIn = document.querySelector(".manual-input[data-field=\"" + name + "\"]");
+        var hiddenIn = document.querySelector(".predict-value[data-field=\"" + name + "\"]");
+        if(sel.value === "__manual__"){
+            if(manualIn) hiddenIn.value = manualIn.value.trim();
+        } else {
+            if(hiddenIn) hiddenIn.value = sel.value || "";
+        }
+    });
+    const hiddens = document.querySelectorAll(".predict-value");
+    for(var i=0;i<hiddens.length;i++){
+        if(!hiddens[i].value || hiddens[i].value.trim()===""){
+            alert("Please select or enter a value for all fields");
+            return false;
+        }
+    }
+    return true;
+}
+</script>
+
+{% endblock %}

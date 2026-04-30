@@ -1,0 +1,269 @@
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<title>Login</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<head>
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+		<style>
+			body {background: url("{% static 'bg.jpg' %}");
+			background-color:#eee;}
+			.container-fluid {padding:50px;}
+			.container{background-color:white;padding:50px;   }
+			#title{font-family: 'Fredoka One', cursive;
+}
+			.text-uppercase{
+			font-family: 'Righteous', cursive;
+
+			}
+		.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+        .style2 {
+	font-family: 'Righteous', cursive;
+	color: #FF0000;
+	font-weight: bold;
+}
+.style5 {
+	color: #FF0099;
+	font-weight: bold;
+}
+        </style>
+	</head>
+	<body>
+	<div class="container-fluid">
+		<div>
+			<h2 class="text-center style1" id="title">Trustworthy and Reliable Deep Learning Based Cyberattack Detection in Industrial IoT</h2>
+			 <p class="text-center"> <span class="style5"><small id="passwordHelpInline" class="text-muted">Cybersecurity, data acquisition networks,deep learning, Industrial Internet of Things (IIoT), supervisory control, trustworthiness..
+
+          </small></span> </p>
+ 			<hr>
+			<div class="row">
+
+
+				<div class="col-md-2">
+					<!-------null
+				</div>
+
+				<div class="col-md-5">
+ 				 		<form method="POST" role="form">
+							{% csrf_token %}
+
+						<fieldset>
+                             {% load static %}
+						<img src="{% static '/login.jpg' %}" alt="My image">
+							<p class="style2"> Login Service Provider: </p>
+
+							<div class="form-group">
+								<input type="text" name="username"   placeholder="User Name" required>
+							</div>
+							<div class="form-group">
+								<input type="password" name="password"   placeholder="Password" required>
+							</div>
+							<div>
+								<input type="submit" name="submit1"  class="btn btn-md" value="Login">
+							</div>
+ 						</fieldset>
+						<br><br>
+						<button class="btn btn-lg "><a href="{% url 'login' %}">User Login</a></button> 
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html> ------>
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Login - IIoT Cyber Defense</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background:black;
+    overflow:hidden;
+    color:#00ffe7;
+}
+
+/* MATRIX BG */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* CENTER */
+.wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* GLASS CARD */
+.admin-box{
+    width:400px;
+    background:rgba(15,23,42,0.9);
+    border:1px solid #00ffe7;
+    padding:35px;
+    border-radius:12px;
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 25px #00ffe7aa;
+    animation:fadeIn 1.2s ease;
+}
+
+/* TITLE */
+.title{
+    text-align:center;
+    font-size:18px;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #00ffe7;
+}
+
+/* LABEL */
+.sub{
+    text-align:center;
+    font-size:13px;
+    margin-bottom:20px;
+    color:#7df9ff;
+}
+
+/* INPUTS */
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    background:#020617;
+    border:1px solid #00ffe7;
+    color:#00ffe7;
+    border-radius:5px;
+}
+
+input::placeholder{
+    color:#22d3ee;
+}
+
+/* BUTTON */
+.login-btn{
+    width:100%;
+    padding:12px;
+    background:#00ffe7;
+    color:black;
+    border:none;
+    border-radius:5px;
+    font-weight:bold;
+    margin-top:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    background:#22fff0;
+    transform:scale(1.05);
+}
+
+/* BACK BTN */
+.back{
+    text-align:center;
+    margin-top:15px;
+}
+
+.back a{
+    color:#00ffe7;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(25px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="wrapper">
+<div class="admin-box">
+
+<div class="title">Service Provider Access</div>
+<div class="sub">Industrial Cyber Defense Admin Panel</div>
+
+<form method="POST">
+{% csrf_token %}
+
+<input type="text" name="username" placeholder="Admin Username" required>
+<input type="password" name="password" placeholder="Admin Password" required>
+
+<input type="submit" name="submit1" class="login-btn" value="LOGIN">
+
+</form>
+
+<div class="back">
+<a href="{% url 'login' %}">← Back to User Login</a>
+</div>
+
+</div>
+</div>
+
+<!-- MATRIX SCRIPT -->
+<script>
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
+
+for(let x=0;x<columns;x++) drops[x]=1;
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ffe7";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text=letters.charAt(Math.floor(Math.random()*letters.length));
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+}
+}
+setInterval(draw,35);
+</script>
+
+</body>
+</html>

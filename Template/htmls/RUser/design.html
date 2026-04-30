@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #020617, #000000 70%);
+    color:#00ffe7;
+}
+
+/* NAVBAR */
+.topnav{
+    background:#020617;
+    padding:15px 30px;
+    border-bottom:1px solid #00ffe7;
+    box-shadow:0 0 15px #00ffe744;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LEFT */
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* PROFILE CIRCLE */
+.profile-pic{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:2px solid #00ffe7;
+    object-fit:cover;
+}
+
+/* TYPING WELCOME */
+.welcome-text{
+    font-size:18px;
+    text-shadow:0 0 8px #00ffe7aa;
+}
+
+/* RIGHT LINKS */
+.nav-links a{
+    color:#00ffe7;
+    text-decoration:none;
+    margin-left:25px;
+    padding:6px 10px;
+    transition:0.2s;
+}
+
+.nav-links a:hover{
+    border:1px solid #00ffe7;
+    border-radius:4px;
+    text-shadow:0 0 8px #00ffe7;
+}
+/* DASHBOARD HOME */
+.dashboard-home{
+    text-align:center;
+    animation:fadeIn 1s ease;
+}
+
+/* GLOW CIRCLE */
+.pulse-circle{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin:0 auto 20px;
+    background:radial-gradient(circle,#00ffe7,#00ffe722);
+    box-shadow:0 0 25px #00ffe7;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1); opacity:1}
+    50%{transform:scale(1.2); opacity:.6}
+    100%{transform:scale(1); opacity:1}
+}
+
+/* TITLE */
+.dash-title{
+    font-size:24px;
+    margin-bottom:10px;
+    text-shadow:0 0 12px #00ffe7;
+}
+
+/* SUBTEXT */
+.dash-sub{
+    color:#7df9ff;
+    margin-bottom:30px;
+}
+
+/* GRID */
+.dash-grid{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+/* CARDS */
+.dash-card{
+    width:260px;
+    background:#020617;
+    border:1px solid #00ffe7;
+    padding:20px;
+    border-radius:8px;
+    transition:.3s;
+    box-shadow:0 0 12px #00ffe733;
+}
+
+.dash-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #00ffe7;
+}
+
+.dash-card h3{
+    margin-bottom:8px;
+}
+
+/* MAIN AREA */
+.mainholder{
+    padding:40px;
+}
+
+/* GLASS CARD */
+.container-box{
+    background:rgba(2,6,23,0.8);
+    border:1px solid #00ffe7;
+    border-radius:10px;
+    padding:30px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px #00ffe744;
+    animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+/* LOGOUT FADE */
+body.fade-out{
+    animation:fadeOut .5s forwards;
+}
+@keyframes fadeOut{
+    to{opacity:0; transform:scale(.95)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="topnav">
+
+    <div class="nav-left">
+        <!-- Profile circle (default image) -->
+        <!--<img src="{% static 'avatar.png' %}" class="profile-pic">-->
+
+        <div class="welcome-text">
+            Welcome <span id="typedUser"></span>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="{% url 'Predict_Cyber_Attack_Type' %}">PREDICT CYBER ATTACK TYPE</a>
+        <a href="{% url 'ViewYourProfile' %}">VIEW YOUR PROFILE</a>
+        <a href="{% url 'login' %}" onclick="logoutAnim(event)">LOGOUT</a>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="mainholder">
+    <div class="container-box">
+
+        {% block userblock %}
+
+        <!-- DEFAULT DASHBOARD CONTENT -->
+        <div class="dashboard-home">
+
+            <div class="pulse-circle"></div>
+
+            <h2 class="dash-title">Industrial Cyber Defense Console</h2>
+
+            <p class="dash-sub">
+                Real-time deep learning powered intrusion detection for secure Industrial IoT environments.
+            </p>
+
+            <div class="dash-grid">
+
+                <div class="dash-card">
+                    <h3>AI Threat Prediction</h3>
+                    <p>Run ensemble deep learning models to detect cyberattack patterns across network traffic.</p>
+                </div>
+
+                <div class="dash-card">
+                    <h3>Secure Monitoring</h3>
+                    <p>Analyze packet behavior, ports, and anomaly signatures for intrusion detection.</p>
+                </div>
+
+                <div class="dash-card">
+                    <h3>Hybrid Intelligence</h3>
+                    <p>Voting-based models combining neural networks, SVM, and tree classifiers.</p>
+                </div>
+
+            </div>
+        </div>
+
+        {% endblock %}
+
+    </div>
+</div>
+
+
+<!-- USERNAME TYPING EFFECT -->
+<script>
+const username = "{{ request.session.userid|default:'' }}";
+const text = "{{ request.session.username|default:'' }}";
+let i = 0;
+
+function typeUser(){
+    if(i < text.length){
+        document.getElementById("typedUser").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeUser, 50);
+    }
+}
+typeUser();
+</script>
+
+<!-- LOGOUT ANIMATION -->
+<script>
+function logoutAnim(e){
+    e.preventDefault();
+    document.body.classList.add("fade-out");
+    setTimeout(()=>{
+        window.location.href = e.target.href;
+    }, 500);
+}
+</script>
+
+</body>
+</html>
