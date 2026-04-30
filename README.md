@@ -43,6 +43,7 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 
 ---
 
+
 ## 🖥️ Output Screens
 
 ### 🔐 Login Page
@@ -54,8 +55,7 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 
 ### 📊 Admin Dashboard
 <p align="center">
-  <img src="trustworthy_and_reliable_deep_learning/images/admin_dashboard.png" width="700"/>
-   
+  <img src="images/admin_dashboard.png" width="700"/>
 </p>
 
 ---
@@ -71,8 +71,6 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 <p align="center">
   <img src="images/analytics.png" width="700"/>
 </p>
-
----
 
 ## ⚙️ Installation & Setup
 
