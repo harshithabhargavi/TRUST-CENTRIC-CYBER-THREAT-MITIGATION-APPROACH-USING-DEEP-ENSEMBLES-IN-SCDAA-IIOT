@@ -47,28 +47,28 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 
 ### 🔐 Login Page
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/login.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/login.png.png" width="700"/>
 </p>
 
 ---
 
 ### 📊 Admin Dashboard
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/admin_dashboard.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/admin_dashboard.png.png" width="700"/>
 </p>
 
 ---
 
 ### 🧠 Cyber Attack Prediction Input
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/prediction_input.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/prediction_input.png.png" width="700"/>
 </p>
 
 ---
 
 ### 📈 Attack Analytics
 <p align="center">
-  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/analytics.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/analytics.png.png" width="700"/>
 </p>
 
 ---
