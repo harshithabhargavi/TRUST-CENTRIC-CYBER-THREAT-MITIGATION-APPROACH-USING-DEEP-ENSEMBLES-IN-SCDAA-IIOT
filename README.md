@@ -29,70 +29,73 @@ With the rapid growth of IIoT systems, cyber threats have become more advanced. 
 
 ## 📊 Methodology
 
-1. **Data Preprocessing**
-   - Missing value handling (mean imputation)
-   - Label Encoding
-   - Feature Scaling
+### Data Preprocessing
+- Missing value handling (mean imputation)  
+- Label Encoding  
+- Feature Scaling  
 
-2. **Ensemble Learning**
-   - Soft Voting Classifier combining multiple models
-   - Improves accuracy and reduces false positives
+### Ensemble Learning
+- Soft Voting Classifier combining multiple models  
+- Improves accuracy and reduces false positives  
 
-3. **Deployment**
-   - Integrated into Django for real-time predictions
+### Deployment
+- Integrated into Django for real-time predictions  
 
 ---
-
 
 ## 🖥️ Output Screens
 
 ### 🔐 Login Page
 <p align="center">
-  <img src="images/login.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/login.png" width="700"/>
 </p>
 
 ---
 
 ### 📊 Admin Dashboard
 <p align="center">
-  <img src="images/admin_dashboard.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/admin_dashboard.png" width="700"/>
 </p>
 
 ---
 
 ### 🧠 Cyber Attack Prediction Input
 <p align="center">
-  <img src="images/prediction_input.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/prediction_input.png" width="700"/>
 </p>
 
 ---
 
 ### 📈 Attack Analytics
 <p align="center">
-  <img src="images/analytics.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT/main/images/analytics.png" width="700"/>
 </p>
+
+---
 
 ## ⚙️ Installation & Setup
 
 ### 1. Clone Repository
-bash
+```bash
 git clone https://github.com/harshithabhargavi/TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT.git
 cd TRUST-CENTRIC-CYBER-THREAT-MITIGATION-APPROACH-USING-DEEP-ENSEMBLES-IN-SCDAA-IIOT
 
-### 2. Install Git LFS & Pull Models
-bash
+Install Git LFS & Pull Models
 git lfs install
 git lfs pull
-
 3. Install Dependencies
 pip install -r requirements.txt
-
-4.Run Project
+4. Run Project
 python manage.py migrate
 python manage.py runserver
-
-### 💡 Quick Note
-Make sure:
-- You already installed Git LFS (one-time):
-```bash
-git lfs install
+✨ Features
+Real-time cyber threat detection
+Ensemble ML model for high accuracy
+Admin dashboard for monitoring
+Data visualization (charts & graphs)
+Secure SCADA-IIoT environment
+🔮 Future Scope
+Real-time IoT device integration
+Cloud deployment (AWS/GCP)
+Advanced deep learning models
+Alert/notification system
